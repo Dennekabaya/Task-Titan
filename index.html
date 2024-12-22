@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager Dashboard</title>
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <style>
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <h1>Task Titan</h1>
+    </div>
+    
+    <!-- Hamburger Icon -->
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+ <div class="mobile-nav">
+   <div class="overlay"></div>
+  <a href="/html/day.html" class="active">Day manager</a>
+  <a href="#monthly-planner">Monthly planner</a>
+  <a href="#project-manager">Project manager</a>
+  <a href="#contact">Statistics</a>
+</div>
+
+  <!-- Main Dashboard -->
+  <main class="dashboard">
+    
+    <!-- Hero Section -->
+<div class="hero">
+      <h1>Welcome, <span>HUMANGPT</span> <span class="emoji">🤖</span>!</h1>
+      <p>
+        Stay organized and achieve your goals. <br>
+        Plan your day, track your projects, and stay productive.
+      </p>
+    </div>
+
+<!-- Today's Schedule -->
+<section id="day-manager" class="today-schedule">
+  <h2>Today's Schedule</h2>
+  <ul id="today-schedule-list">
+    <li><strong>8:00 AM</strong> - Design Homepage UI</li>
+    <li><strong>10:00 AM</strong> - Fix JavaScript Bugs</li>
+    <li><strong>1:00 PM</strong> - Client Meeting</li>
+    <li><strong>3:00 PM</strong> - Research UI Libraries</li>
+    <li><strong>5:00 PM</strong> - Test Web App</li>
+  </ul>
+  <button id="show-more-today">Show More</button>
+</section>
+
+<!-- Monthly Targets -->
+<section id="monthly-planner" class="monthly-targets">
+  <h2>Monthly Targets</h2>
+  <ul id="monthly-targets-list">
+    <li><span>Finish Project Alpha</span> <span class="due-date">Due: June 20</span></li>
+    <li>Refactor Task Manager Code</li>
+    <li>Research new UI libraries</li>
+    <li>Write documentation</li>
+    <li>Prepare client report</li>
+  </ul>
+  <button id="show-more-monthly">Show More</button>
+</section>
+    <!-- Project Progress -->
+    <section id="project-manager" class="project-progress">
+      <h2>Project Progress</h2>
+      <div class="project-card">
+        <h3>Project Alpha</h3>
+        <div class="progress-bar">
+          <div class="progress" style="width: 60%;"></div>
+        </div>
+        <span>60% Complete</span>
+      </div>
+      <div class="project-card">
+        <h3>Task Manager</h3>
+        <div class="progress-bar">
+          <div class="progress" style="width: 40%;"></div>
+        </div>
+        <span>40% Complete</span>
+      </div>
+    </section>
+
+<!-- Stats Overview Section -->
+ <!-- Stats Overview Section -->
+<section class="stats-overview">
+  
+      <button class="slider-btn left">&#10094;</button>
+      <div class="stat-container">
+        <div class="stat">
+          <h3>125</h3>
+          <p>Tasks Completed</p>
+        </div>
+        <div class="stat">
+          <h3>40</h3>
+          <p>Projects In Progress</p>
+        </div>
+        <div class="stat">
+          <h3>8</h3>
+          <p>Upcoming Deadlines</p>
+        </div>
+        <div class="stat">
+          <h3>12</h3>
+          <p>Goals Achieved</p>
+        </div>
+        <div class="stat">
+          <h3>20</h3>
+          <p>New Tasks</p>
+        </div>
+      </div>
+      <button class="slider-btn right">&#10095;</button>
+    </section>
+    
+    <section id="recent-activity">
+  <h2>Recent Activity</h2>
+  <ul>
+    <li><strong>12/18/2024:</strong> Updated Task Manager UI</li>
+    <li><strong>12/17/2024:</strong> Completed Project Alpha Milestone</li>
+    <li><strong>12/16/2024:</strong> Added New Feature: Task Priority</li>
+  </ul>
+</section>
+<section id="calendar">
+  <h2>Upcoming Deadlines</h2>
+  <div class="calendar-widget">
+    <div class="calendar-header">
+      <button class="prev-month">&#8592;</button>
+      <span class="month-year">December 2024</span>
+      <button class="next-month">&#8594;</button>
+    </div>
+    <div class="calendar-days">
+      <!-- Dynamically generate the days here with JavaScript -->
+    </div>
+  </div>
+</section>
+
+<!-- Deadline Info Section -->
+<section id="deadline-info">
+  <h3>Deadline Details</h3>
+  <p id="deadline-description">Click a date with a deadline to see more details.</p>
+</section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Task Manager by Denolabs. All rights reserved.</p>
+  </footer>
+
+<script src="/main.js"></script>
+</body>
+</html>

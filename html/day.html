@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day Manager</title>
+  <link rel="stylesheet" href="/css/day.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <h1>Task Titan</h1>
+    </div>
+    
+    <!-- Hamburger Icon -->
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+ <div class="mobile-nav">
+   <div class="overlay"></div>
+  <a href="#home" class="active">Day manager</a>
+  <a href="#about">Monthly planner</a>
+  <a href="#services">Project manager</a>
+  <a href="#contact">Statistics</a>
+</div>
+
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <!-- Add Task Section -->
+<section class="add-task">
+      <h2>Add a New Task</h2>
+      <form id="task-form">
+        <input type="text" id="task-title" placeholder="Task Title (e.g., Morning Jog)" required />
+        <button type="button" class="reveal-btn" id="reveal-form-btn">Add More Details</button>
+        <div id="extra-fields" class="hidden">
+          <textarea id="task-desc" placeholder="Task Description (optional)"></textarea>
+          <div class="time-container">
+            <label for="start-time">Start Time:</label>
+            <input type="time" id="start-time" required />
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time" required />
+          </div>
+          <div class="priority-container">
+            <label for="task-priority">Priority:</label>
+            <select id="task-priority">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit">Add Task</button>
+      </form>
+    </section>
+
+    <!-- Task List Section -->
+    <section class="task-list">
+      <h2>Tasks for <span id="selected-date">Today</span></h2>
+      <div class="task-categories">
+        <!-- Morning Tasks -->
+        <div class="task-category">
+          <h3>Morning</h3>
+          <ul id="morning-tasks" class="task-group"></ul>
+        </div>
+        <!-- Afternoon Tasks -->
+        <div class="task-category">
+          <h3>Afternoon</h3>
+          <ul id="afternoon-tasks" class="task-group"></ul>
+        </div>
+        <!-- Evening Tasks -->
+        <div class="task-category">
+          <h3>Evening</h3>
+          <ul id="evening-tasks" class="task-group"></ul>
+        </div>
+      </div>
+      <select id="priority-filter">
+  <option value="All">All</option>
+  <option value="Low">Low</option>
+  <option value="Medium">Medium</option>
+  <option value="High">High</option>
+</select>
+    </section>
+  </main>
+
+  <!-- Task Editing Modal -->
+  <div id="edit-task-modal" class="modal">
+    <div class="modal-content">
+      <h3>Edit Task</h3>
+      <form id="edit-task-form">
+        <input type="text" id="edit-task-title" placeholder="Task Title" required />
+        <textarea id="edit-task-desc" placeholder="Task Description"></textarea>
+        <div class="time-container">
+          <label for="edit-start-time">Start Time:</label>
+          <input type="time" id="edit-start-time" required />
+          <label for="edit-end-time">End Time:</label>
+          <input type="time" id="edit-end-time" required />
+        </div>
+        <div class="priority-container">
+          <label for="edit-task-priority">Priority:</label>
+          <select id="edit-task-priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <button type="submit">Save Changes</button>
+        <button type="button" id="close-modal">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Your JavaScript to handle task actions will go here.
+ const hamburger = document.querySelector('.hamburger');
+const mobileNav = document.querySelector('.mobile-nav');
+ // Toggle mobile navigation on hamburger click
+hamburger.addEventListener('click', () => {
+  mobileNav.classList.toggle('active'); // Show/hide the mobile nav
+});
+document.getElementById('reveal-form-btn').addEventListener('click', function () {
+  const extraFields = document.getElementById('extra-fields');
+  if (extraFields.classList.contains('hidden')) {
+    extraFields.classList.remove('hidden');
+    this.textContent = 'Hide Details';
+  } else {
+    extraFields.classList.add('hidden');
+    this.textContent = 'Add More Details';
+  }
+});
+
+// Sample task data
+const tasks = {
+  morning: [],
+  afternoon: [],
+  evening: []
+};
+
+// Add task function
+function addTask(period, taskText) {
+  const taskGroup = document.getElementById(`${period}-tasks`);
+  const taskItem = document.createElement('li');
+  taskItem.textContent = taskText;
+  taskItem.classList.add('task-item');
+
+  // Add "completed" toggle
+  taskItem.addEventListener('click', () => {
+    taskItem.classList.toggle('completed');
+  });
+
+  taskGroup.appendChild(taskItem);
+  tasks[period].push(taskText); // Save in data structure
+}
+
+// Example usage
+addTask('morning', 'Morning Jog');
+addTask('afternoon', 'Complete Project');
+addTask('evening', 'Watch Tutorials');
+
+
+function filterTasksByPriority(priority) {
+  document.querySelectorAll('.task-group li').forEach(task => {
+    const taskPriority = task.dataset.priority;
+    task.style.display = taskPriority === priority || priority === 'All' ? '' : 'none';
+  });
+}
+
+// Example dropdown to select priority
+const priorityFilter = document.getElementById('priority-filter');
+priorityFilter.addEventListener('change', (e) => {
+  filterTasksByPriority(e.target.value);
+});
+
+
+  </script>
+</body>
+</html>

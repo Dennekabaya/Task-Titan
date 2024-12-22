@@ -1,0 +1,810 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; /* Modern font */
+}
+
+/* Body */
+body {
+  background-color: #1e1e2e;
+  color: #f8f8f2;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Font Face */
+@font-face {
+  font-family: 'fonta';
+  src: url('/fonts/AnkhSanctuary-PVK0B.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: #282a36;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #ff77ff;
+  letter-spacing: 1px;
+  font-family: fonta;
+}
+
+nav a {
+  text-decoration: none;
+  color: #00ff80;
+  margin: 0 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+  position: relative;
+}
+
+nav a:hover, nav a.active {
+  color: #ff77ff;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #ff77ff;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav a.active::after, nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #282a36;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  padding: 15px 20px;
+  border-top: 2px solid #ff77ff;
+}
+
+.mobile-nav a {
+  color: #f8f8f2;
+  text-decoration: none;
+  padding: 12px;
+  font-size: 1.1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.mobile-nav a:hover, .mobile-nav a.active {
+  color: #ff77ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  .mobile-nav.active {
+    display: flex;
+  }
+}
+
+.hero {
+  background: linear-gradient(135deg, #2b2b3c, #3e3f5e); /* Lighter gradient */
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  margin: 20px 10px;
+}
+
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00bcd4; /* Soft blue for headings */
+  margin-bottom: 10px;
+}
+
+.hero span {
+  color: #00e676; /* Highlight color for the name */
+}
+
+.hero p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #e0e0e0; /* Light gray for better readability */
+  margin-bottom: 20px;
+}
+
+.hero .emoji {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+/* Dashboard Layout */
+.dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: #8be9fd;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+/* Schedule & Monthly Targets */
+ul {
+  list-style: none;
+}
+
+li {
+  background: #44475a;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li strong {
+  color: #50fa7b;
+}
+
+.due-date {
+  color: #ffb86c;
+  font-size: 0.9rem;
+}
+
+/* Project Progress */
+.project-card {
+  background: #44475a;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #6272a4;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.progress {
+  height: 100%;
+  background: #50fa7b;
+  transition: width 0.5s ease-in-out;
+}
+
+.project-card span {
+  font-size: 0.9rem;
+  color: #f8f8f2;
+}
+
+/* Stats Overview Section */
+.stats-overview {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden; /* Ensure clean clipping */
+  padding-bottom: 1rem;
+  background: linear-gradient(145deg, #2e3440, #3b4750); /* Adding a gradient for depth */
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.stat-container {
+  display: flex;
+  gap: 2rem;
+  transform-style: preserve-3d; /* Enable 3D effect */
+  transition: transform 0.6s ease-in-out;
+  width: max-content; /* Allows flexible content width */
+  padding: 1rem;
+}
+
+.stat {
+  flex: 0 0 300px; /* Set fixed width for each stat */
+  background: #44475a;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: rotateY(10deg) scale(0.98); /* 3D tilt effect with slight scaling */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.stat:hover {
+  transform: rotateY(0deg) scale(1.05); /* Scale up slightly on hover */
+  background-color: #3e434f; /* Lighter background on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.stat h3 {
+  font-size: 3rem;
+  color: #ffb86c;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Add a slight shadow for more pop */
+}
+
+.stat p {
+  font-size: 1.2rem;
+  color: #bd93f9;
+  font-weight: 500;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Slider Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.slider-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1); /* Slight scaling effect on hover */
+}
+
+.slider-btn.left {
+  left: 10px;
+}
+
+.slider-btn.right {
+  right: 10px;
+}
+
+/* Additional Animations for the Stat Container */
+.stat-container:hover {
+  transform: translateX(-20px) scale(1.03); /* Subtle movement when hovering over the container */
+}
+
+/* Add an interactive effect on hover for the stat container */
+.stat-container:active {
+  transform: translateX(10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #282a36;
+  margin-top: 2rem;
+}
+
+.footer p {
+  color: #f8f8f2;
+  font-size: 0.9rem;
+}
+
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; /* Modern font */
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e1e2e; /* Dark theme */
+  color: #fff;
+  padding: 15px 25px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.logo h1 {
+  font-size: 1.75rem;
+  font-weight: 600; /* Slightly lighter weight for a more refined look */
+  color: #ff77ff; /* Accent color */
+  letter-spacing: 1px; /* Slight letter spacing for elegance */
+}
+
+nav a {
+  text-decoration: none;
+  color: #00ff80; /* Soft green */
+  margin: 0 20px;
+  font-size: 1rem;
+  font-weight: 500; /* More professional weight */
+  transition: color 0.3s ease-in-out;
+  position: relative;
+}
+
+nav a:hover, nav a.active {
+  color: #ff77ff; /* Hover color */
+}
+
+/* Indicator for active link */
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #ff77ff;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav a.active::after, nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 5px; /* Rounded edges for a cleaner look */
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: none; /* Initially hidden */
+  flex-direction: column;
+  background: #1e1e2e;
+  position: fixed; /* Changed from absolute to fixed */
+  top: 60px; /* Space from the top */
+  right: 0;
+  width: 100%;
+  padding: 15px 20px;
+  border-top: 2px solid #ff77ff; /* Divider for clarity */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Mobile Navigation Links */
+.mobile-nav a {
+  color: #00ff80;
+  text-decoration: none;
+  padding: 12px;
+  font-size: 1.1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Hover and active link styles */
+.mobile-nav a:hover, .mobile-nav a.active {
+  color: #ff77ff;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  
+
+  .mobile-nav.active {
+    display: flex;
+  }
+}
+.mobile-nav {
+  display: block;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-nav.active {
+  transform: translateX(0);
+}
+/* Slide-up effect for newly revealed tasks */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Add some spacing and styling to make it look better */
+#day-manager, #monthly-planner {
+  margin-bottom: 20px;
+  overflow: hidden; /* Hide the part that is outside the container */
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+/* Calendar Section */
+#calendar {
+  background-color: #212529; /* Dark background for the calendar */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+#calendar h2 {
+  font-size: 1.5rem;
+  color: #f8f9fa; /* Light text for heading */
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeIn 1s forwards 0.3s;
+}
+
+/* Calendar Widget */
+.calendar-widget {
+  background-color: #343a40; /* Dark background for the widget */
+  border: 1px solid #495057; /* Darker border */
+  padding: 15px;
+  border-radius: 8px;
+  opacity: 0;
+  animation: fadeIn 1s forwards 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%; /* Ensures it fits within the parent container */
+  overflow: scroll ; /* Prevents overflow */
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.month-year {
+  font-size: 1.2rem;
+  color: #f8f9fa; /* Light text */
+}
+
+.next-month {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #f8f9fa; /* Light text */
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns for the days */
+  grid-gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.calendar-day {
+  padding: 10px;
+  text-align: center;
+  background-color: #495057;
+  color: #f8f8f2;
+  border-radius: 6px;
+  font-size: 14px; /* Ensure text fits within the box */
+  height: 40px;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-day:hover {
+  background-color: #2980b9; /* Hover effect for the days */
+  cursor: pointer;
+}
+
+.today {
+  border-bottom: 3px solid #ff77ff; /* Accent Color for today */
+}
+
+.marked-date {
+  background-color: #ff77ff; /* Accent color for marked dates */
+  color: #1e1e2e; /* Dark background for text */
+  font-weight: bold;
+}
+
+.has-deadline {
+  background-color: #dc3545; /* Red for days with deadlines */
+  font-weight: bold;
+}
+
+/* Deadline Info Section */
+#deadline-info {
+  background-color: #2b2b3c; /* Hero Section Gradient Background */
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.3s ease;
+  color: #f8f8f2; /* Light Text Color */
+}
+
+#deadline-info h3 {
+  font-size: 24px;
+  color: #f8f8f2; /* Light Text Color */
+  margin-bottom: 10px;
+}
+
+#deadline-info p {
+  font-size: 16px;
+  color: #e0e0e0; /* Light Gray Text Color */
+  line-height: 1.5;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #3e3f5e; /* Stats Overview Gradient Background */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#deadline-info p#deadline-description {
+  color: #ff77ff; /* Accent Color: Magenta */
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #2b2b3c; /* Hero Section Gradient Background */
+}
+
+#deadline-info p#deadline-description:empty {
+  color: #e0e0e0; /* Light Gray Text Color */
+  font-style: italic;
+}
+
+#deadline-info button {
+  background-color: #00ff80; /* Accent Color: Neon Green */
+  color: #1e1e2e; /* Dark Background Color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#deadline-info button:hover {
+  background-color: #2980b9; /* Button Hover Color: Subtle Blue */
+}
+
+/* Keyframes for fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#recent-activity {
+  background-color: #212529; /* Dark background */
+  color: #f8f9fa; /* Light text */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 30px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#recent-activity h2 {
+  font-size: 1.8rem;
+  color: #ff77ff; /* Accent color */
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+#recent-activity ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#recent-activity ul li {
+  background-color: #343a40; /* Slightly lighter dark background for list items */
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+#recent-activity ul li:hover {
+  background-color: #495057; /* Lighter shade on hover */
+}
+
+#recent-activity ul li strong {
+  font-weight: bold;
+  color: #ff77ff; /* Accent color for dates */
+}
+
+@media (max-width: 768px) {
+  #recent-activity {
+    padding: 15px;
+    margin: 20px;
+  }
+
+  #recent-activity h2 {
+    font-size: 1.5rem;
+  }
+
+  #recent-activity ul li {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+/* General Button Styles */
+button {
+  background-color: #00ff80; /* Neon green for the primary button */
+  color: #1e1e2e; /* Dark background for text */
+  font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  text-transform: uppercase; /* Capitalize button text */
+  letter-spacing: 1px; /* Add slight spacing for better readability */
+}
+
+/* Hover State */
+button:hover {
+  background-color: #2980b9; /* Subtle blue on hover */
+  transform: translateY(-2px); /* Slightly raise the button */
+}
+
+/* Active State */
+button:active {
+  background-color: #ff77ff; /* Accent color when clicked */
+  transform: translateY(2px); /* Push down slightly when clicked */
+}
+
+/* Disabled State */
+button:disabled {
+  background-color: #6c757d; /* Gray color for disabled state */
+  cursor: not-allowed;
+}
+
+/* Secondary Button */
+button.secondary {
+  background-color: #495057; /* Dark gray for secondary buttons */
+  color: #f8f9fa; /* Light text for contrast */
+}
+
+button.secondary:hover {
+  background-color: #6c757d; /* Lighter gray for hover */
+}
+
+/* Outline Button */
+button.outline {
+  background-color: transparent;
+  color: #00ff80; /* Neon green outline */
+  border: 2px solid #00ff80;
+}
+
+button.outline:hover {
+  background-color: #00ff80; /* Neon green background on hover */
+  color: #1e1e2e; /* Dark text on hover */
+}
+
+/* Button in Dark Background */
+button.dark-bg {
+  background-color: #343a40; /* Dark background for the button */
+  color: #f8f9fa; /* Light text */
+  border: 2px solid #495057; /* Dark border */
+}
+
+button.dark-bg:hover {
+  background-color: #495057; /* Lighter dark background on hover */
+}
+
+/* Button for Large Containers */
+button.large {
+  font-size: 1.2rem; /* Larger text */
+  padding: 15px 25px; /* Bigger padding */
+  border-radius: 8px; /* Larger radius for a rounder look */
+}
+
+/* Button for Small Containers */
+button.small {
+  font-size: 0.9rem; /* Smaller text */
+  padding: 8px 15px; /* Compact padding */
+  border-radius: 4px; /* Smaller radius */
+}
